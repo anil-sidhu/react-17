@@ -1,10 +1,10 @@
-function User() {
-    return (
-      <div className="App">
-       <h1>Hello User !</h1>
-      </div>
-    );
-  }
-  
-  export default User;
-  
+import React,{Component} from 'react'
+export default class User extends Component
+{
+    render()
+    {
+        return (
+            <h1>Hello from User</h1>
+        )
+    }
+}
