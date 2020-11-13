@@ -1,10 +1,11 @@
 import logo from './logo.svg';
 import './App.css';
-
+import Login from './Login'
 function App() {
+  const data = true;
   return (
     <div className="App">
-     <h1>Hello World !</h1>
+     <Login />
     </div>
   );
 }
