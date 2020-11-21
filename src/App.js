@@ -1,11 +1,16 @@
 import './App.css';
-import React,{useState}from 'react'
+import './style.css'
+import style from './custom.module.css'
+import React from 'react'
 function App() {
-  const [data,setData]=useState("Anil")
+  const styleItem={color:'red',backgroundColor:'black'}
   return (
     <div className="App">
-      <h1>Hooks in React {data}</h1>
-      <button onClick={()=>setData("Peter")}>Update State</button>
+      <h1 className="primary">Style type 1 in React js</h1>
+      <h1 style={styleItem}>Style type 2 in React js</h1>
+      <h1 className={style.success} >Style type 3 in React js</h1>
+
+
     </div>
   );
 }
