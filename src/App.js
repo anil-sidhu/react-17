@@ -1,12 +1,29 @@
 import './App.css';
-import React,{useState}from 'react'
+import React from 'react'
+import Cols from './Cols'
 function App() {
-  const [data,setData]=useState("Anil")
   return (
-    <div className="App">
-      <h1>Hooks in React {data}</h1>
-      <button onClick={()=>setData("Peter")}>Update State</button>
-    </div>
+    <>
+      <h1>React Fragment</h1>
+     <table>
+       <tbody>
+         <tr>
+          <Cols />
+          <Cols />
+          <Cols />
+          <Cols />
+          <Cols />
+          <Cols />
+          <Cols />
+          <Cols />
+          <Cols />
+          <Cols />
+
+         </tr>
+       </tbody>
+     </table>
+      </>
+      
   );
 }
 
