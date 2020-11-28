@@ -1,29 +1,16 @@
-import './App.css';
 import React from 'react'
-import Cols from './Cols'
+import './App.css';
+import User from './User'
 function App() {
+  function getName(name)
+  {
+    alert(name)
+  }
   return (
-    <>
-      <h1>React Fragment</h1>
-     <table>
-       <tbody>
-         <tr>
-          <Cols />
-          <Cols />
-          <Cols />
-          <Cols />
-          <Cols />
-          <Cols />
-          <Cols />
-          <Cols />
-          <Cols />
-          <Cols />
-
-         </tr>
-       </tbody>
-     </table>
-      </>
-      
+    <div className="App">
+      <h1>Lifting State Up</h1>
+      <User getData={getName} />
+    </div>
   );
 }
 
