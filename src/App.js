@@ -1,13 +1,25 @@
 import './App.css';
-import React,{useState}from 'react'
-function App() {
-  const [data,setData]=useState("Anil")
+import React from 'react'
+import Counter from './Counter'
+class  App extends React.Component {
+  constructor()
+  {
+    super();
+    this.state={
+      count:1
+    }
+  }
+ render()
+ {
   return (
     <div className="App">
-      <h1>Hooks in React {data}</h1>
-      <button onClick={()=>setData("Peter")}>Update State</button>
+     <Counter count={this.state.count} />
+      <button 
+      onClick={()=>{this.setState({count:this.state.count+1})}}
+      >Update Count</button>
     </div>
   );
+ }
 }
 
 export default App;
