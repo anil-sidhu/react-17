@@ -1,43 +1,25 @@
 import './App.css';
 import React from 'react'
-import { BrowserRouter as Router, Link, Route,Switch } from 'react-router-dom'
+import {BrowserRouter as Router,Link,Route} from 'react-router-dom'
+import User from './User'
 function App() {
+  let user=[
+    {name:'anil',id:1},
+    {name:'peter',id:2},
+    {name:'bruce',id:3},
+    {name:'tony',id:4},
+  ]
   return (
     <div className="App">
       <Router>
-        <Link to="/" >Home</Link> <br /><br />
-        <Link to="/about" >About</Link> <br />
-        <Link to="/login" >Login</Link> <br />
-
-        <Switch >
-        <Route path="/" exact={true}><Home /></Route>
-        <Route path="/about"><About /></Route>
-        <Route path="*"><PageNotFound /></Route>
-
-        </Switch>
+      <h1>React Dynamic Routing</h1>
+      {
+        user.map((item)=>
+      <div><Link to={"/user/"+item.id+"/"+item.name}>{item.name}</Link></div>)
+      }
+      <Route path="/user/:id/:name" ><User /></Route>
       </Router>
     </div>
   );
 }
-
-function Home() {
-  return (<div>
-    <h1>Home Page</h1>
-    <p>This is Home Page</p>
-  </div>)
-}
-
-function About() {
-  return (<div>
-    <h1>About Page</h1>
-    <p>This is About Page</p>
-  </div>)
-}
-function PageNotFound() {
-  return (<div>
-    <h1>404 Page</h1>
-    <p>This is Not found</p>
-  </div>)
-}
-
 export default App;
