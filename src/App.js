@@ -1,24 +1,39 @@
 import './App.css';
-import React from 'react'
-import {BrowserRouter as Router,Link,Route} from 'react-router-dom'
-import User from './User'
+import React,{useEffect,useState} from 'react'
 function App() {
-  let user=[
-    {name:'anil',id:1},
-    {name:'peter',id:2},
-    {name:'bruce',id:3},
-    {name:'tony',id:4},
-  ]
+  const [users,setUser]=useState([])
+  useEffect(()=>{
+    fetch("http://localhost:4000/todo").then((result)=>{
+      result.json().then((resp)=>{
+        // console.warn(resp)
+        setUser(resp)
+      })
+    })
+  },[])
+  console.warn(users)
   return (
     <div className="App">
-      <Router>
-      <h1>React Dynamic Routing</h1>
-      {
-        user.map((item)=>
-      <div><Link to={"/user/"+item.id+"/"+item.name}>{item.name}</Link></div>)
-      }
-      <Route path="/user/:id/:name" ><User /></Route>
-      </Router>
+      <h1>Get API Call </h1>
+      <table border="1">
+       <tbody>
+       <tr>
+          <td>ID</td>
+          <td>Name</td>
+          <td>Email</td>
+          <td>Mobile</td>
+        </tr>
+        {
+          users.map((item,i)=>
+            <tr key={i}>
+            <td>{item.userId}</td>
+          <td>{item.name}</td>
+          <td>{item.email}</td>
+            <td>{item.mobile}</td>
+          </tr>
+          )
+        }
+       </tbody>
+      </table>
     </div>
   );
 }
