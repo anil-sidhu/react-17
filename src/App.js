@@ -1,13 +1,17 @@
 import './App.css';
 import React from 'react'
-import Child from './Child'
 function App() {
-  const [count,setCount]=React.useState(0)
+  const [data,setData]=React.useState({name:'anil',age:27})
   return (
     <div className="App">
-      <Child count={count} />
-      <button onClick={()=>{setCount( Math.floor(Math.random()*10) )}} >Update Counter</button>
-    </div>
+      <h1>State Object with Hooks</h1>
+      <input type="text" onChange={(e)=>{setData({...data,name:e.target.value})}} />
+      <input type="text" onChange={(e)=>{setData({...data,name:data.name,age:e.target.value})}} />
+
+      <h1>Name:{data.name}</h1>
+      <h1>Age:{data.age}</h1>
+
+    </div >
   );
 }
 
