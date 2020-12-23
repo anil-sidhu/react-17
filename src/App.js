@@ -1,20 +1,31 @@
-import './App.css';
-import React from 'react'
-function App() {
-  const [data,setData]=React.useState({name:'anil',age:27})
+import React, { useEffect, useState } from 'react'
+// json format
+import Form  from './Form'
+function App(){
+const [users] = useState(
+  [
+    { name: 'peter', email: 'peter@abc.com', mobile: 9999 },
+  { name: 'bruce', email: 'bruce@abc.com', mobile: 9999 },
+  { name: 'sam', email: 'sam@abc.com', mobile: 9999 },
+  { name: 'tony', email: 'tony@abc.com', mobile: 9999 }
+  ]
+)
+// map function 
+{
   return (
-    <div className="App">
-      <h1>State Object with Hooks</h1>
-      <input type="text" onChange={(e)=>{setData({...data,name:e.target.value})}} />
-      <input type="text" onChange={(e)=>{setData({...data,name:data.name,age:e.target.value})}} />
-
-      <h1>Name:{data.name}</h1>
-      <h1>Age:{data.age}</h1>
-
-    </div >
-  );
+    <div>
+      <Form />
+      <h1>User List</h1>
+      {
+         users.map((item)=>
+         <div>
+           <h1>{item.name} {item.email} {item.mobile} </h1>
+         
+           </div>
+         )
+      }
+    </div>
+  )
 }
-
-
-
-export default App;
+}
+export default App
