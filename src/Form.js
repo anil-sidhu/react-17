@@ -9,14 +9,14 @@ function Form()
 {
   let[name,addname]=useState("")
   let[age,addage]=useState(0)
-  let[hobbies,addhobbies]=useState(null)
-  let[hobbies1,addhobbies1]=useState(null)
+  let[hobbies,addhobbies]=useState({hb1:'',hb2:""})
+  // let[hobbies1,addhobbies1]=useState(null)
   let[gender,addgender]=useState("")
   let[language,addlang]=useState("")
   let [collection,setCollection]=useState([]);
  function  onSubmit()
   {
-    let item={name,age,hobbies,gender,language,hobbies1,hobbies}
+    let item={name,age,hobbies,gender,language,hobbies}
     let x=collection;
     x.push(item)
     collection.push()
@@ -27,26 +27,27 @@ function Form()
   }
   function controlHb(e)
   {
-   
-    if(!e.target.value)
+    let item=e.target.value
+    if(!item)
     {
-      addhobbies("Reading_Books")
+      addhobbies({...hobbies,hb1:"Reading books"})
     }
     else
     {
-      addhobbies(null)
+      addhobbies({...hobbies,hb1:""})
     }
   }
   function controlHb1(e)
   {
     
-    if(!e.target.value)
+    let item=e.target.value
+    if(!item)
     {
-      addhobbies1("Lisening_Music")
+      addhobbies({...hobbies,hb2:"Lisening Music"})
     }
     else
     {
-      addhobbies1(null)
+      addhobbies({...hobbies,hb2:""})
     }
   }
   return (
@@ -57,8 +58,8 @@ function Form()
       <label>AGE<input type="text"  onChange={(e)=>{addage(e.target.value)}}/><br></br></label>
       
       <label>Hobbies<br></br></label>
-      <input type="checkbox" id="hobby_1" name="hobby_1" value={hobbies}  onChange={controlHb}/><label>Reading books<br></br></label>
-      <input type="checkbox" id="hobby_1" name="hobby_1"  value={hobbies1} onChange={controlHb1} /><label>Lisening Music<br></br></label>
+      <input type="checkbox" id="hobby_1" name="hobby_1" value={hobbies.hb1}  onChange={controlHb}/><label>Reading books<br></br></label>
+      <input type="checkbox" id="hobby_1" name="hobby_1" value={hobbies.hb2}  onChange={controlHb1} /><label>Lisening Music<br></br></label>
       {/* <input type="checkbox" id="hobby_1" name="hobby_1"checked={hobbies}  value="Watching_Tv"  onChange={(e)=>{addhobbies(e.target.value)}}/><label>Watching Tv<br></br></label> */}
      
       <div >
@@ -76,12 +77,7 @@ function Form()
      <br></br>
       </div> 
       <button onClick={onSubmit} type="button" >Save</button>
-      <div id="my_data" >
-        <center>
-          <h3>MY DATA</h3>
-          <p>My name is {name}</p>
-        </center>
-      </div>
+      
      
       </div>
 
