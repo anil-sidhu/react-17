@@ -1,16 +1,18 @@
-import React,{useEffect,useRef} from 'react'
+import React, { useState } from 'react'
 function Child(props)
 {
-    const lastVal=useRef();
-    useEffect(()=>{
-        lastVal.current=props.count
-    })
-    const previousProps=lastVal.current
+    const [collection,setCollection]=useState({name:'peter'})
+    const [name,setName]=useState("")
+    console.warn(props)
+    function setData()
+    {
+       
+    }
     return(
         <div>
-            <h1>Count is  : {props.count}</h1>
-            <h1>previous Props is  : {previousProps}</h1>
-
+<h1>Child Component</h1>
+<input type="text"  onChange={(e)=> props.getData(e.target.value)} />
+<button onClick={setData}>Click Me</button>
         </div>
     )
 }

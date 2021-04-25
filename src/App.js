@@ -1,26 +1,24 @@
-import React, { useEffect, useState } from 'react'
-// json format
-import Form  from './Form'
-function App(){
+import './App.css';
+import React, { useState,useMemo } from 'react'
+function App() {
+  const [count, setData] = useState(1)
+  const [item, setItem] = useState(20)
 
-  // url  https://jsonplaceholder.typicode.com/todos/
-  // method, GET,POST,PUT,DELETE
-  // POSTMAN 
-  // GET / params 
-  // response
-  React.useEffect(()=>{
-    let url="https://jsonplaceholder.typicode.com/todos/";
-    fetch(url).then((response)=>{
-      response.json().then((result)=>{
-        console.warn("result",result)
-      })
-      // console.warn("response",response)
-    })
-  })
- return(
-   <div>
-     <h1>API </h1>
-   </div>
- )
+  const newApple=useMemo(
+    function appleTime() {
+      console.warn("Hello")
+      return 100 * count;
+    }
+  ,[count])
+  return (
+    <div className="App">
+      <h1>Hooks in React {count}</h1>
+      {newApple}
+      <button onClick={() => setData(count + 1)}>Update State</button>
+      <button onClick={() => setItem(item * 10)}>Update State</button>
+
+    </div>
+  );
 }
-export default App
+
+export default App;
