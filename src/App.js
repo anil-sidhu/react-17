@@ -1,24 +1,20 @@
-import './App.css';
-import React, { useState,useMemo } from 'react'
+import React, { useState,useEffect } from "react";
+import "./App.css";
 function App() {
-  const [count, setData] = useState(1)
-  const [item, setItem] = useState(20)
+  const [name,setName]=useState("");
 
-  const newApple=useMemo(
-    function appleTime() {
-      console.warn("Hello")
-      return 100 * count;
-    }
-  ,[count])
-  return (
-    <div className="App">
-      <h1>Hooks in React {count}</h1>
-      {newApple}
-      <button onClick={() => setData(count + 1)}>Update State</button>
-      <button onClick={() => setItem(item * 10)}>Update State</button>
+  useEffect(()=>{
+    console.log("called");
+    setName(Math.random());
+  },[name])
 
-    </div>
-  );
+  return(
+  <div>
+      <h1>React Interview Questions Part 4</h1>
+      <h3>{name}</h3>
+          <button onClick={()=>setName('Anil Sidhu')} >Update Name</button>
+
+  </div>
+  )
 }
-
 export default App;
